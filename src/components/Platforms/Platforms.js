@@ -1,5 +1,6 @@
 import React from 'react';
 import './style.css';
+import Button from '../Button/Button';
 
 function checkName(u)
 {
@@ -53,14 +54,14 @@ function Platforms({data,currentPlatForm,setcurrentPlatForm}) {
                         isVisible : true
                     };
                     localStorage.setItem(u,JSON.stringify(newObj));
-                    return <button onClick={() => {setcurrentPlatForm(u)}}>{Name}</button>
+                    return <Button u={u} data={Name} setcurrentPlatForm={setcurrentPlatForm}/>
                 }
                 else
                 {
                     const val = JSON.parse(check);
                     if(val.isVisible === true)
                     {
-                        return <button onClick={() => {setcurrentPlatForm(u)}}>{val.name}</button>
+                        return <Button u={u} data={val.name} setcurrentPlatForm={setcurrentPlatForm}/>
                     }
                     else
                     {
