@@ -1,22 +1,34 @@
-import React,{useState,useEffect} from 'react';
+import React from 'react';
 import './style.css';
 import Cardview from '../Cardview/Cardview';
 
-function Content() {
-
-  const [items,setItems] = useState([]);
-
-  useEffect(async () => {
-    const data = await fetch('https://script.google.com/macros/s/AKfycbzeaLxWh-51mxv2C8Kib31esBtDQaSpBRcouFjyDmaojftGNLu2/exec');
-    const result = await data.json();
-    setItems(result.objects); 
-  },[]); 
-
+function Content({items,PlatForm}) {
   return (
    <div className="Content">
-        {items.map(item => (
-          <Cardview key={item.id} item={item}/>
-        ))}
+        <h1>Running</h1> 
+        {items.map((item) => 
+        {
+          if(item.platform === PlatForm && item.status === "Running")
+          { 
+            return <Cardview key={item.id} item={item}/>
+          }
+          else 
+          {
+            return null
+          }
+        })}
+        <h1>Yet to</h1> 
+        {items.map((item) => 
+        {
+          if(item.platform === PlatForm && item.status === "Yet To")
+          { 
+            return <Cardview key={item.id} item={item}/>
+          }
+          else 
+          {
+            return null
+          }
+        })}
    </div>
   );
 }
