@@ -1,9 +1,12 @@
 .App
 {
-
+    display: flex;
+    min-height: 100vh;
 }
 
 .Container
 {
-    
+    flex: 0.8;
+    display: flex;
+    flex-direction: column;
 }

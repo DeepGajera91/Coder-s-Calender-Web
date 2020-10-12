@@ -1,5 +1,6 @@
 import React,{useState,useEffect} from 'react';
 import './style.css';
+import Cardview from '../Cardview/Cardview';
 
 function Content() {
 
@@ -12,14 +13,10 @@ function Content() {
   },[]); 
 
   return (
-   <div>
-      <ul>
+   <div className="Content">
         {items.map(item => (
-          <li key={item.id}>
-            {item.platform}
-          </li>
+          <Cardview key={item.id} item={item}/>
         ))}
-      </ul> 
    </div>
   );
 }
