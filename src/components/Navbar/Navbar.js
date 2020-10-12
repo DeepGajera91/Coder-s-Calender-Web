@@ -3,7 +3,7 @@ import './style.css';
 
 function Navbar() {
   return (
-    <div>
+    <div className="Navbar">
       <h1>Navbar</h1>
     </div>
   );
