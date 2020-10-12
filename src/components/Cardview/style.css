@@ -1,0 +1,26 @@
+.Cardview {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    background-color: white;
+    margin: 12px 4px;
+    border-radius: 8px;
+    display: flex;
+    width: 100%;
+    padding: 8px;
+    flex-direction: column;
+  }
+  
+  .Cardview:hover {
+    box-shadow: 0 12px 20px 0 rgba(0,0,0,0.4);
+    cursor: pointer;
+  }
+
+  .Title {
+      font-size: 20px;
+      margin-bottom: 10px;
+  }
+  
+  h4{
+      margin: 0;
+      padding: 0;
+  }

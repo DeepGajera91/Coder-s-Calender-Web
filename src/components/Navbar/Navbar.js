@@ -1,7 +1,7 @@
 import React from 'react';
 import './style.css';
 
-function Navbar({PlatForm,setPlatForm}) {
+function Navbar() {
   return (
     <div className="Navbar">
       <h1>Navbar</h1>
