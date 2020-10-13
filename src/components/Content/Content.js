@@ -26,7 +26,7 @@ function Content({items,PlatForm}) {
         <div className="Running">
             {Run.map((run) => 
               {
-                return (run ? <Cardview key={run.id} item={run}/> : null) 
+                return (run ? <Cardview key={run.id} item={run} /> : null) 
               }
             )}
         </div>
@@ -36,7 +36,7 @@ function Content({items,PlatForm}) {
         <div className="Yet">
             {Yet.map((yet) => 
               {
-                return (yet ? <Cardview key={yet.id} item={yet}/> : null) 
+                return (yet ? <Cardview key={yet.id} item={yet} /> : null) 
               }
             )}
         </div>

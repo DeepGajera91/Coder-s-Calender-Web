@@ -3,26 +3,8 @@ import './style.css';
 
 function Settings({unique,currentPlatForm,setcurrentPlatForm}) {
 
-  const [timecheck,changeTime] = useState(true);
-
-  useEffect(()=>{
-    var timechk = localStorage.getItem('12hour');
-    console.log(timechk);
-    if(timechk===null){
-      const obj = {
-        isHour: true
-      }
-      localStorage.setItem('12hour',obj);
-    if(timechk === null){
-      localStorage.setItem(`12hour`,true);
-    }
-    else{
-      changeTime(timechk);
-    }
-  },[])
-
   function onChangeCheckbox(keyValue){  
-      var oldObj = JSON.parse(localStorage.getItem(keyValue));
+      let oldObj = JSON.parse(localStorage.getItem(keyValue));
       if(oldObj !== null){
         oldObj.isVisible = !oldObj.isVisible;
         oldObj = JSON.stringify(oldObj);
@@ -56,9 +38,8 @@ function Settings({unique,currentPlatForm,setcurrentPlatForm}) {
       <div className="Timeformat">
         <h3>Time Format</h3>
         <div className="Time">
-          <h1>{timecheck}</h1>
-          <p><input type="radio" id="male" name="time" value="12hour" />12 Hour</p>
-          <p><input type="radio" id="female" name="time" value="24hour" />24 Hour</p>
+            <p><input type="radio" id="12hour" name="time" value="12hour" />12 Hour</p>
+            <p><input type="radio" id="24hour" name="time" value="24hour" />24 Hour</p>
         </div>
       </div>
     </div>

@@ -49,11 +49,11 @@ function App() {
                         {loading ? 
                             <Loading /> 
                             : 
-                            <Content items={data} PlatForm = {currentPlatForm}/>
+                            <Content items={data} PlatForm = {currentPlatForm} />
                         }
                     </Route>
                     <Route path="/settings">
-                        <Settings unique={unique} currentPlatForm={currentPlatForm} setcurrentPlatForm={setcurrentPlatForm}/>
+                        <Settings unique={unique} currentPlatForm={currentPlatForm} setcurrentPlatForm={setcurrentPlatForm} />
                     </Route>
                 </Switch>
             </div>
