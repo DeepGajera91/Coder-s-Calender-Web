@@ -76,7 +76,7 @@ function Cardview({item}) {
         <div className="DateTime">
           <h4>Start:&nbsp;
           {
-            item.start.substring(0, 10)
+              item.start.substring(0, 10)
           }&nbsp;
           {
               new Date(item.start).toLocaleTimeString({},{timeZone:'UTC',hour12:true,hour:'numeric',minute:'numeric'})
@@ -84,14 +84,13 @@ function Cardview({item}) {
           </h4>
           <h4>End:&nbsp;
           {
-            item.end.substring(0, 10)
+              item.end.substring(0, 10)
           }&nbsp;
           {
               new Date(item.end).toLocaleTimeString({},{timeZone:'UTC',hour12:true,hour:'numeric',minute:'numeric'})
           }
           </h4>
         </div>
-        
         <h3>Duration: {secondsToHm(item.duration)}</h3>
     </div>
   );

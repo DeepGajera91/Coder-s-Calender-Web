@@ -30,5 +30,3 @@ function Navbar() {
 }
 
 export default Navbar;
-
-{/* <Link to="/">Home</Link> */}
