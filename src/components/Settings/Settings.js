@@ -6,10 +6,13 @@ function Settings({unique}) {
   const [timecheck,changeTime] = useState(true);
 
   useEffect(()=>{
-    var timechk = localStorage.getItem(`12hour`);
+    var timechk = localStorage.getItem('12hour');
     console.log(timechk);
     if(timechk===null){
-      localStorage.setItem(`12hour`,true);
+      const obj = {
+        isHour: true
+      }
+      localStorage.setItem('12hour',obj);
     }
     else{
       changeTime(timechk);

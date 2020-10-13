@@ -23,10 +23,33 @@ function Cardview(item) {
     return dDisplay + hDisplay + mDisplay; 
 }
 
+  var hour = JSON.parse(localStorage.getItem(`12hour`));
+  console.log(hour);
+  let hourformat;
+  if(hour===null)
+  {
+    hourformat = {
+      isHour: true
+    }
+    localStorage.setItem(`12hour`,hourformat);
+  }
+  else{
+    hourformat = hour;
+  }
+  console.log(hourformat.isHour);
   return (
     <div className="Cardview">
         <h4 className="Title"><b>{item.item.title}</b></h4> 
-        <h4>Starts at: {item.item.start}</h4>
+        <h4>Starts at:&nbsp;
+        {
+          item.item.start.substring(0, 10)
+        }&nbsp;
+        {
+          (hourformat.isHour)?
+            new Date(item.item.start).toLocaleTimeString({},{timeZone:'UTC',hour12:true,hour:'numeric',minute:'numeric'}):
+            item.item.start.substring(11, 19)
+        }
+        </h4>
         <h4>Ends at: {item.item.end}</h4>
         <h4>Duration: {secondsToHm(item.item.duration)}</h4>
     </div>
