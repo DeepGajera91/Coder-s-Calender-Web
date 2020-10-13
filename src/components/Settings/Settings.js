@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from 'react';
 import './style.css';
 
-function Settings({unique}) {
+function Settings({unique,currentPlatForm,setcurrentPlatForm}) {
 
   const [timecheck,changeTime] = useState(true);
 
@@ -13,18 +13,33 @@ function Settings({unique}) {
         isHour: true
       }
       localStorage.setItem('12hour',obj);
+    if(timechk === null){
+      localStorage.setItem(`12hour`,true);
     }
     else{
       changeTime(timechk);
     }
-  })
+  },[])
 
-  function onChangeCheckbox(event){
-    var chk = JSON.parse(localStorage.getItem(event.target.value));
-    if(chk!==null){
-      chk.isVisible = !chk.isVisible;
-      localStorage.setItem(event.target.value,JSON.stringify(chk));
-    } 
+  function onChangeCheckbox(keyValue){  
+      var oldObj = JSON.parse(localStorage.getItem(keyValue));
+      if(oldObj !== null){
+        oldObj.isVisible = !oldObj.isVisible;
+        oldObj = JSON.stringify(oldObj);
+        localStorage.setItem(keyValue,oldObj);
+      } 
+      for(let i=0;i<unique.length;i++)
+      {
+          var Obj = JSON.parse(localStorage.getItem(unique[i]));
+          if(Obj !== null)
+          {
+              if(Obj.isVisible === true)
+              {
+                  setcurrentPlatForm(unique[i]);
+                  break;
+              }
+          } 
+      }
   }
 
   return (
@@ -33,8 +48,8 @@ function Settings({unique}) {
         <h3>Contest's Platforms</h3>
         {
           unique.map((u)=>{
-            const chk = JSON.parse(localStorage.getItem(u));
-            return <p><input type="checkbox" defaultChecked={chk.isVisible} value={u} onChange={(e) => onChangeCheckbox(e)}/>{chk.name}</p>
+            const curObj = JSON.parse(localStorage.getItem(u));
+            return <p><input type="checkbox" defaultChecked={curObj.isVisible} value={u} onChange={(event) => onChangeCheckbox(event.target.value)}/>{curObj.name}</p>
           })
         }
       </div>

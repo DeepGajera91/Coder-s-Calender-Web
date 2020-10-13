@@ -25,16 +25,15 @@ function Cardview(item) {
 
   var hour = JSON.parse(localStorage.getItem(`12hour`));
   console.log(hour);
-  let hourformat;
+  let hourformat = {
+    isHour: true
+  };
   if(hour===null)
   {
-    hourformat = {
-      isHour: true
-    }
     localStorage.setItem(`12hour`,hourformat);
   }
   else{
-    hourformat = hour;
+    hourformat.isHour = hour.isHour;
   }
   console.log(hourformat.isHour);
   return (

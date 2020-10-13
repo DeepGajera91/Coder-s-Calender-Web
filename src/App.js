@@ -53,7 +53,7 @@ function App() {
                         }
                     </Route>
                     <Route path="/settings">
-                        <Settings unique={unique}/>
+                        <Settings unique={unique} currentPlatForm={currentPlatForm} setcurrentPlatForm={setcurrentPlatForm}/>
                     </Route>
                 </Switch>
             </div>
