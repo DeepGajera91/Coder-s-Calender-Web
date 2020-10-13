@@ -14,7 +14,3 @@ function Cardview(item) {
 }
 
 export default Cardview;
-
-{/* <div className="Cardview">
-        <p>{JSON.stringify(item)}</p>
-    </div> */}
