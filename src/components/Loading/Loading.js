@@ -3,7 +3,7 @@ import './style.css';
 
 function Loading() {
   return (
-    <div className="Navbar">
+    <div className="loader">
       <h1>Loading</h1>
     </div>
   );
