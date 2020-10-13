@@ -37,16 +37,14 @@ function checkName(u)
         return val;
 }
 
-function Platforms({data,currentPlatForm,setcurrentPlatForm}) {   
+function Platforms({unique,data,currentPlatForm,setcurrentPlatForm}) {   
 
-    const unique = [...new Set(data.map(item => item.platform))];
-
+    // const unique = [...new Set(data.map(item => item.platform))];
     return (
         <div className="Platforms"> 
             {unique.map((u) => {
                 const check = localStorage.getItem(u); 
-                console.log(check);
-                if(check == null)
+                if(check === null)
                 {
                     let Name = checkName(u);
                     const newObj = {
@@ -54,14 +52,14 @@ function Platforms({data,currentPlatForm,setcurrentPlatForm}) {
                         isVisible : true
                     };
                     localStorage.setItem(u,JSON.stringify(newObj));
-                    return <Button u={u} data={Name} setcurrentPlatForm={setcurrentPlatForm}/>
+                    return <Button u={u} data={Name} currentPlatForm = {currentPlatForm} setcurrentPlatForm={setcurrentPlatForm}/>
                 }
                 else
                 {
                     const val = JSON.parse(check);
                     if(val.isVisible === true)
                     {
-                        return <Button u={u} data={val.name} setcurrentPlatForm={setcurrentPlatForm}/>
+                        return <Button u={u} data={val.name} currentPlatForm = {currentPlatForm} setcurrentPlatForm={setcurrentPlatForm}/>
                     }
                     else
                     {

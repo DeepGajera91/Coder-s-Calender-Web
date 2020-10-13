@@ -1,10 +1,31 @@
 .Content {
-    border: 2px solid red;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.Running{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
 }
 
-.Content>div{
+.Running>div{
     flex: 0 45%;
+}
+
+.Yet{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.Yet>div{
+    flex: 0 45%;
+}
+
+.types{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

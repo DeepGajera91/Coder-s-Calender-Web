@@ -4,25 +4,43 @@ import Content from './components/Content/Content';
 import Navbar from './components/Navbar/Navbar';
 import Sidebar from './components/Sidebar/Sidebar';
 import Platforms from './components/Platforms/Platforms';
+import Loading from './components/Loading/Loading';
 
 function App() {
 
   const [data,setData] = useState([]);
-  const [currentPlatForm,setcurrentPlatForm] = useState(`codeforces.com`);
+  const [loading,setLoading] = useState(true);
+  const [currentPlatForm,setcurrentPlatForm] = useState(``);
+  const unique = [`codeforces.com`,`atcoder.jp`,`codechef.com`,`hackerearth.com`,`leetcode.com`,`topcoder.com`,`codingcompetitions.withgoogle.com`,`spoj.com`];
 
   useEffect(async () => {
     const response = await fetch('https://script.google.com/macros/s/AKfycbzeaLxWh-51mxv2C8Kib31esBtDQaSpBRcouFjyDmaojftGNLu2/exec');
     const result = await response.json();
     setData(result.objects);
+    for(let i=0;i<unique.length;i++)
+    {
+        let check = localStorage.getItem(unique[i]);
+        check = JSON.parse(check);
+        if(check.isVisible === true)
+        {
+          setcurrentPlatForm(unique[i]);
+          break;
+        }
+    }
+    setLoading(false);
   },[]); 
 
   return (
     <div className="App">
         <Sidebar/>
         <div className="Container">
-          <Navbar />
-          <Platforms data={data} currentPlatForm={currentPlatForm} setcurrentPlatForm={setcurrentPlatForm}/>
-          <Content items={data} PlatForm = {currentPlatForm}/>
+            <Navbar />
+            <Platforms unique={unique} data={data} currentPlatForm={currentPlatForm} setcurrentPlatForm={setcurrentPlatForm}/>
+            {loading ? 
+                <Loading /> 
+                : 
+                <Content items={data} PlatForm = {currentPlatForm}/>
+            }
         </div>
     </div>
   );

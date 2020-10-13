@@ -4,9 +4,9 @@
     background-color: white;
     margin: 12px 4px;
     border-radius: 8px;
-    display: flex;
     width: 100%;
     padding: 8px;
+    display: flex;
     flex-direction: column;
   }
   
