@@ -1,10 +1,17 @@
 import React,{useState,useEffect} from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 import './App.css';
 import Content from './components/Content/Content';
 import Navbar from './components/Navbar/Navbar';
 import Sidebar from './components/Sidebar/Sidebar';
 import Platforms from './components/Platforms/Platforms';
 import Loading from './components/Loading/Loading';
+import Settings from './components/Settings/Settings';
 
 function App() {
 
@@ -31,18 +38,27 @@ function App() {
   },[]); 
 
   return (
-    <div className="App">
-        <Sidebar/>
-        <div className="Container">
-            <Navbar />
-            <Platforms unique={unique} data={data} currentPlatForm={currentPlatForm} setcurrentPlatForm={setcurrentPlatForm}/>
-            {loading ? 
-                <Loading /> 
-                : 
-                <Content items={data} PlatForm = {currentPlatForm}/>
-            }
+    <Router>
+        <div className="App">
+            <Sidebar/>
+            <div className="Container">
+                <Navbar />
+                <Switch>
+                    <Route exact path="/">
+                        <Platforms unique={unique} data={data} currentPlatForm={currentPlatForm} setcurrentPlatForm={setcurrentPlatForm}/>
+                        {loading ? 
+                            <Loading /> 
+                            : 
+                            <Content items={data} PlatForm = {currentPlatForm}/>
+                        }
+                    </Route>
+                    <Route path="/settings">
+                        <Settings />
+                    </Route>
+                </Switch>
+            </div>
         </div>
-    </div>
+    </Router>
   );
 }
 
