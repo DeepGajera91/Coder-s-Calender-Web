@@ -1,5 +1,50 @@
 import React,{useState,useEffect} from 'react';
 import './style.css';
+import atcoder from '../../img/atcoder.png';
+import codechef from '../../img/codechef.png';
+import hackerearth from '../../img/hackerearth.png';
+import hackerrank from '../../img/hackerrank.png';
+import topcoder from '../../img/topcoder.png';
+import leetcode from '../../img/leetcode.png';
+import codeforces from '../../img/codeforces.png';
+import spoj from '../../img/spoj.png';
+import google from '../../img/google.png';
+
+
+function checkName(u)
+{
+        let val = codeforces;
+        switch(u)
+        {
+            case `codeforces.com`: 
+                val = codeforces;
+                break;
+            case `atcoder.jp`: 
+                val = atcoder;
+                break;
+            case `codechef.com`:
+                val = codechef;
+                break;
+            case `hackerearth.com`:
+                val = hackerearth;
+                break;
+            case `leetcode.com`:
+                val = leetcode;
+                break;
+            case `topcoder.com`:
+                val = topcoder;
+                break;
+            case `codingcompetitions.withgoogle.com`:
+                val = google;
+                break;
+            case `spoj.com`:
+                val = spoj;
+                break;
+            default:
+                break;    
+        }  
+        return val;
+}
 
 function Cardview({item}) {
 
@@ -25,24 +70,29 @@ function Cardview({item}) {
 
   return (
     <div className="Cardview">
+        <img className="PlatfromLogo" src={checkName(item.platform)}/>
+        <hr/>
         <h4 className="Title"><b>{item.title}</b></h4> 
-        <h4>Starts at:&nbsp;
-        {
-          item.start.substring(0, 10)
-        }&nbsp;
-        {
-            new Date(item.start).toLocaleTimeString({},{timeZone:'UTC',hour12:true,hour:'numeric',minute:'numeric'})
-        }
-        </h4>
-        <h4>Ends at:&nbsp;
-        {
-          item.end.substring(0, 10)
-        }&nbsp;
-        {
-            new Date(item.end).toLocaleTimeString({},{timeZone:'UTC',hour12:true,hour:'numeric',minute:'numeric'})
-        }
-        </h4>
-        <h4>Duration: {secondsToHm(item.duration)}</h4>
+        <div className="DateTime">
+          <h4>Start:&nbsp;
+          {
+            item.start.substring(0, 10)
+          }&nbsp;
+          {
+              new Date(item.start).toLocaleTimeString({},{timeZone:'UTC',hour12:true,hour:'numeric',minute:'numeric'})
+          }
+          </h4>
+          <h4>End:&nbsp;
+          {
+            item.end.substring(0, 10)
+          }&nbsp;
+          {
+              new Date(item.end).toLocaleTimeString({},{timeZone:'UTC',hour12:true,hour:'numeric',minute:'numeric'})
+          }
+          </h4>
+        </div>
+        
+        <h3>Duration: {secondsToHm(item.duration)}</h3>
     </div>
   );
 }

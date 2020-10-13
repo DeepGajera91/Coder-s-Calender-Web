@@ -21,7 +21,7 @@ function Content({items,PlatForm}) {
   return (
    <div className="Content">
         <div className="types">
-            {Run.length>1 && <h1>Live Contents</h1>}
+            {Run.length>1 && <h2>Live Contents</h2>}
         </div>
         <div className="Running">
             {Run.map((run) => 
@@ -31,7 +31,7 @@ function Content({items,PlatForm}) {
             )}
         </div>
         <div className="types">
-            {Yet.length>1 && <h1>Upcoming Contests</h1>}
+            {Yet.length>1 && <h2>Upcoming Contests</h2>}
         </div>
         <div className="Yet">
             {Yet.map((yet) => 

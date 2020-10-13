@@ -1,3 +1,46 @@
 .Navbar {
-    
+    display: flex;
+    padding: 12px 24px;
+    justify-content: space-between;
+}
+
+.Header1 {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.Header2 {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.Logo {
+    height: 48px;
+    width: 48px;
+}
+
+.Tt{
+    padding: 0;
+    margin: 0;
+    font-size: 32px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    margin-left: 12px;
+}
+
+.Playstore{
+    height: 52px;
+    margin-right: 24px;
+}
+
+.Playstore:hover {
+    cursor: pointer;
+}
+
+.St{
+    height: 32px;
+    width: 32px;
 }

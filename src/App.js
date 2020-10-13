@@ -8,7 +8,6 @@ import {
 import './App.css';
 import Content from './components/Content/Content';
 import Navbar from './components/Navbar/Navbar';
-import Sidebar from './components/Sidebar/Sidebar';
 import Platforms from './components/Platforms/Platforms';
 import Loading from './components/Loading/Loading';
 import Settings from './components/Settings/Settings';
@@ -40,8 +39,6 @@ function App() {
   return (
     <Router>
         <div className="App">
-            <Sidebar/>
-            <div className="Container">
                 <Navbar />
                 <Switch>
                     <Route exact path="/">
@@ -56,7 +53,6 @@ function App() {
                         <Settings unique={unique} currentPlatForm={currentPlatForm} setcurrentPlatForm={setcurrentPlatForm} />
                     </Route>
                 </Switch>
-            </div>
         </div>
     </Router>
   );
