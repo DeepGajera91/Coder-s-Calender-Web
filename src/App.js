@@ -53,7 +53,7 @@ function App() {
                         }
                     </Route>
                     <Route path="/settings">
-                        <Settings />
+                        <Settings unique={unique}/>
                     </Route>
                 </Switch>
             </div>
