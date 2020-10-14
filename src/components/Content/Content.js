@@ -4,10 +4,19 @@ import Cardview from '../Cardview/Cardview';
 
 function Content({items,PlatForm}) {
 
+  if(PlatForm === ``)
+  {
+      return (
+        <div className="None">
+            You need to choose atleast one PlatForm.
+        </div>
+      );
+  }
+
   const Run = items.filter(item =>(item.platform === PlatForm && item.status === "Running"))
   const Yet = items.filter(item =>(item.platform === PlatForm && item.status === "Yet To"))
   
-  return (
+  return ( 
    <div className="Content">
         <div className="types">
             {Run.length>1 && <h2>Live Contents</h2>}

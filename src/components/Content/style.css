@@ -5,6 +5,12 @@
     margin: 0px 10% 25px 10%;
 }
 
+.None{
+    margin-top: 10%;
+    align-self: center;
+    font-size: large;
+}
+
 .Running{
     display: flex;
     flex-wrap: wrap;

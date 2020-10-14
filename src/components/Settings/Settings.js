@@ -11,6 +11,9 @@ function Settings({setcurrentPlatForm}) {
         oldObj = JSON.stringify(oldObj);
         localStorage.setItem(keyValue,oldObj);
       } 
+
+      let changed = false;
+
       for(let i=0;i<unique.length;i++)
       {
           var Obj = JSON.parse(localStorage.getItem(unique[i]));
@@ -18,10 +21,16 @@ function Settings({setcurrentPlatForm}) {
           {
               if(Obj.isVisible === true)
               {
+                  changed = true;
                   setcurrentPlatForm(unique[i]);
                   break;
               }
           } 
+      }
+
+      if(changed === false)
+      {
+          setcurrentPlatForm(``);
       }
   }
 
