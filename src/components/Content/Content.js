@@ -4,20 +4,9 @@ import Cardview from '../Cardview/Cardview';
 
 function Content({items,PlatForm}) {
 
-  const Run = [...new Set(items.map((item) => {
-    if(item.platform === PlatForm && item.status === "Running")
-    {
-      return item;
-    }
-  }))];
-
-  const Yet = [...new Set(items.map((item) => {
-    if(item.platform === PlatForm && item.status === "Yet To")
-    {
-      return item;
-    }
-  }))];
-
+  const Run = items.filter(item =>(item.platform === PlatForm && item.status === "Running"))
+  const Yet = items.filter(item =>(item.platform === PlatForm && item.status === "Yet To"))
+  
   return (
    <div className="Content">
         <div className="types">

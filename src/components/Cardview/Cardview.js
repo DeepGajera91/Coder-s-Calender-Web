@@ -3,7 +3,6 @@ import './style.css';
 import atcoder from '../../img/atcoder.png';
 import codechef from '../../img/codechef.png';
 import hackerearth from '../../img/hackerearth.png';
-import hackerrank from '../../img/hackerrank.png';
 import topcoder from '../../img/topcoder.png';
 import leetcode from '../../img/leetcode.png';
 import codeforces from '../../img/codeforces.png';

@@ -1,6 +1,7 @@
 import React from 'react';
 import './style.css';
 import Button from '../Button/Button';
+import {unique} from '../../constants';
 
 function checkName(u)
 {
@@ -37,12 +38,12 @@ function checkName(u)
         return val;
 }
 
-function Platforms({unique,data,currentPlatForm,setcurrentPlatForm}) {   
+function Platforms({data,currentPlatForm,setcurrentPlatForm}) {   
 
     // const unique = [...new Set(data.map(item => item.platform))];
     return (
         <div className="Platforms"> 
-            {unique.map((u) => {
+            {unique.map((u,idx) => {
                 const check = localStorage.getItem(u); 
                 if(check === null)
                 {
@@ -52,14 +53,14 @@ function Platforms({unique,data,currentPlatForm,setcurrentPlatForm}) {
                         isVisible : true
                     };
                     localStorage.setItem(u,JSON.stringify(newObj));
-                    return <Button u={u} data={Name} currentPlatForm = {currentPlatForm} setcurrentPlatForm={setcurrentPlatForm}/>
+                    return <Button key={idx} u={u} data={Name} currentPlatForm = {currentPlatForm} setcurrentPlatForm={setcurrentPlatForm}/>
                 }
                 else
                 {
                     const val = JSON.parse(check);
                     if(val.isVisible === true)
                     {
-                        return <Button u={u} data={val.name} currentPlatForm = {currentPlatForm} setcurrentPlatForm={setcurrentPlatForm}/>
+                        return <Button key={idx} u={u} data={val.name} currentPlatForm = {currentPlatForm} setcurrentPlatForm={setcurrentPlatForm}/>
                     }
                     else
                     {

@@ -3,7 +3,6 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
 } from "react-router-dom";
 import axios from 'axios';
 import './App.css';
@@ -12,29 +11,38 @@ import Navbar from './components/Navbar/Navbar';
 import Platforms from './components/Platforms/Platforms';
 import Loading from './components/Loading/Loading';
 import Settings from './components/Settings/Settings';
+import {API_URL,unique}  from './constants';
 
 function App() {
 
   const [data,setData] = useState([]);
   const [loading,setLoading] = useState(false);
   const [isError, setIsError] = useState(false);
-  const [url, setUrl] = useState(
-    'https://script.google.com/macros/s/AKfycbzeaLxWh-51mxv2C8Kib31esBtDQaSpBRcouFjyDmaojftGNLu2/exec',
-  );
   const [currentPlatForm,setcurrentPlatForm] = useState(``);
-  const unique = [`codeforces.com`,`atcoder.jp`,`codechef.com`,`hackerearth.com`,`leetcode.com`,`topcoder.com`,`codingcompetitions.withgoogle.com`,`spoj.com`];
 
-  useEffect( async () => {
+  useEffect(() => {
+
+        const fetch = () => {
+
           setIsError(false);
           setLoading(true);
-          try {
-            const result = await axios(url);
-            setData(result.data.objects);
-            console.log(data);
-          } catch (error) {
+          
+          axios.get(API_URL)
+          .then(({data})=>{
+            setData(data.objects);
+            setIsError(false);
+            setLoading(false);
+          })
+          .catch((e)=>{
+            console.log(e);
             setIsError(true);
-          }
-          for(let i=0;i<unique.length;i++)
+          })
+
+        }
+
+        fetch();
+
+        for(let i=0;i<unique.length;i++)
           {
               let check = localStorage.getItem(unique[i]);
               check = JSON.parse(check);
@@ -44,7 +52,7 @@ function App() {
                 break;
               }
           }
-          setLoading(false);
+          
   },[]); 
 
   return (
@@ -53,7 +61,7 @@ function App() {
                 <Navbar />
                 <Switch>
                     <Route exact path="/">
-                        <Platforms unique={unique} data={data} currentPlatForm={currentPlatForm} setcurrentPlatForm={setcurrentPlatForm}/>
+                        <Platforms data={data} currentPlatForm={currentPlatForm} setcurrentPlatForm={setcurrentPlatForm}/>
                         {isError && <div>Something went wrong ...</div>}
                         {loading ? 
                             <Loading /> 
@@ -62,7 +70,7 @@ function App() {
                         }
                     </Route>
                     <Route path="/settings">
-                        <Settings unique={unique} currentPlatForm={currentPlatForm} setcurrentPlatForm={setcurrentPlatForm} />
+                        <Settings setcurrentPlatForm={setcurrentPlatForm} />
                     </Route>
                 </Switch>
         </div>
