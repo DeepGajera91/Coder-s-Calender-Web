@@ -29,19 +29,21 @@ function Settings({unique,currentPlatForm,setcurrentPlatForm}) {
       <div className="Contests">
         <h3 className="SettingTitle">Contest's Platforms</h3>
         <hr/>
-        <ul>
-          {
-            unique.map((u)=>{
-              const curObj = JSON.parse(localStorage.getItem(u));
-              return (
-                <li>
-                  <label for={u}>{curObj.name}</label>
-                  <input id={u} type="checkbox" class="switch" defaultChecked={curObj.isVisible} value={u} onChange={(event) => onChangeCheckbox(event.target.value)}/>
-                </li>
-              )
-            })
-          }
-        </ul>
+        <div className="UL">
+            <ul>
+              {
+                unique.map((u)=>{
+                  const curObj = JSON.parse(localStorage.getItem(u));
+                  return (
+                    <li>
+                      <label for={u}>{curObj.name}</label>
+                      <input id={u} type="checkbox" class="switch" defaultChecked={curObj.isVisible} value={u} onChange={(event) => onChangeCheckbox(event.target.value)}/>
+                    </li>
+                  )
+                })
+              }
+            </ul>
+         </div>   
       </div>
       
     </div>
