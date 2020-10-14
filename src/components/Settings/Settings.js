@@ -1,7 +1,8 @@
 import React from 'react';
 import './style.css';
+import {unique} from '../../constants';
 
-function Settings({unique,currentPlatForm,setcurrentPlatForm}) {
+function Settings({setcurrentPlatForm}) {
 
   function onChangeCheckbox(keyValue){  
       let oldObj = JSON.parse(localStorage.getItem(keyValue));
@@ -32,12 +33,12 @@ function Settings({unique,currentPlatForm,setcurrentPlatForm}) {
         <div className="UL">
             <ul>
               {
-                unique.map((u)=>{
+                unique.map((u,index)=>{
                   const curObj = JSON.parse(localStorage.getItem(u));
                   return (
-                    <li>
-                      <label for={u}>{curObj.name}</label>
-                      <input id={u} type="checkbox" class="switch" defaultChecked={curObj.isVisible} value={u} onChange={(event) => onChangeCheckbox(event.target.value)}/>
+                    <li key ={index}>
+                      <label htmlFor={u}>{curObj.name}</label>
+                      <input id={u} type="checkbox" className="switch" defaultChecked={curObj.isVisible} value={u} onChange={(event) => onChangeCheckbox(event.target.value)}/>
                     </li>
                   )
                 })
