@@ -5,6 +5,7 @@ button {
     background-color:transparent;
     text-align: center;
     display: inline-block;
+    width:120px;
     font-size: 20px;
     margin: 4px 2px;
     transition-duration: 0.4s;
