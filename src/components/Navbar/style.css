@@ -1,5 +1,6 @@
 .Navbar {
     display: flex;
+    flex-wrap: wrap;
     padding: 12px 24px;
     justify-content: space-between;
 }
