@@ -18,12 +18,12 @@ function Navbar() {
   return (
     <div className="Navbar">
       <div className="Header1">
-        <img className="Logo" src={logo}/>
+        <img className="Logo" src={logo} alt="logo"/>
         <Link className="Tt" to="/">Coder's Calender</Link>
       </div>
       <div className="Header2">
-        <img className="Playstore" onClick={openInNewTab} src={playstore}/>
-        <Link to="/settings"><img className="St" src={setting}/></Link>
+        <img className="Playstore" onClick={openInNewTab} src={playstore} alt="playstore"/>
+        <Link to="/settings"><img className="St" src={setting} alt="settings"/></Link>
       </div>
     </div>
   );
