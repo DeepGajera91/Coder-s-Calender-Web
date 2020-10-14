@@ -68,8 +68,13 @@ function Cardview({item}) {
     return dDisplay + hDisplay + mDisplay; 
   }
 
+  function openInNewTab() {
+    var win = window.open(item.link, '_blank');
+    win.focus();
+  }
+
   return (
-    <div className="Cardview">
+    <div className="Cardview" onClick={openInNewTab}>
         <img className="PlatfromLogo" src={checkName(item.platform)}/>
         <hr/>
         <h4 className="Title"><b>{item.title}</b></h4> 

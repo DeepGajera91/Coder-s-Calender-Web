@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react';
+import React from 'react';
 import './style.css';
 
 function Settings({unique,currentPlatForm,setcurrentPlatForm}) {
@@ -27,21 +27,23 @@ function Settings({unique,currentPlatForm,setcurrentPlatForm}) {
   return (
     <div className="Settings">
       <div className="Contests">
-        <h3>Contest's Platforms</h3>
-        {
-          unique.map((u)=>{
-            const curObj = JSON.parse(localStorage.getItem(u));
-            return <p><input type="checkbox" defaultChecked={curObj.isVisible} value={u} onChange={(event) => onChangeCheckbox(event.target.value)}/>{curObj.name}</p>
-          })
-        }
+        <h3 className="SettingTitle">Contest's Platforms</h3>
+        <hr/>
+        <ul>
+          {
+            unique.map((u)=>{
+              const curObj = JSON.parse(localStorage.getItem(u));
+              return (
+                <li>
+                  <label for={u}>{curObj.name}</label>
+                  <input id={u} type="checkbox" class="switch" defaultChecked={curObj.isVisible} value={u} onChange={(event) => onChangeCheckbox(event.target.value)}/>
+                </li>
+              )
+            })
+          }
+        </ul>
       </div>
-      <div className="Timeformat">
-        <h3>Time Format</h3>
-        <div className="Time">
-            <p><input type="radio" id="12hour" name="time" value="12hour" />12 Hour</p>
-            <p><input type="radio" id="24hour" name="time" value="24hour" />24 Hour</p>
-        </div>
-      </div>
+      
     </div>
   );
 }
